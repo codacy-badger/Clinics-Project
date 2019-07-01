@@ -95,12 +95,36 @@ public class Controller {
         return "redirect:http://localhost:8081/medico/{id}";
     }
 
+    /**
+     * TODO
+     */
+    @GetMapping(value = "/cliente/{id}/porto", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getClienteByIdPorto() {
+        return "redirect:http://localhost:8080/cliente/{id}";
+    }
 
-    @GetMapping(value = "/consulta", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/cliente/{id}/lisboa", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getClienteByIdLisboa() {
+        return "redirect:http://localhost:8081/cliente/{id}";
+    }
+
+
+    @GetMapping(value = "/consulta/porto", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Iterable getAllConsultas() {
+    Iterable getAllConsultasPorto() {
         // String[] path={"http://localhost:8080/consulta","http://localhost:8081/consulta"};
         String path = "http://localhost:8080/consulta";
+        HttpHeaders headers = new HttpHeaders ();
+        HttpEntity<String> nullBodyRequest = new HttpEntity<> (null, headers);
+        ResponseEntity<Iterable> responseEntity = makeRequest (path, HttpMethod.GET, nullBodyRequest, Iterable.class);
+        return responseEntity.getBody ();
+    }
+
+    @GetMapping(value = "/consulta/lisboa", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Iterable getAllConsultasLisboa() {
+        // String[] path={"http://localhost:8080/consulta","http://localhost:8081/consulta"};
+        String path = "http://localhost:8081/consulta";
         HttpHeaders headers = new HttpHeaders ();
         HttpEntity<String> nullBodyRequest = new HttpEntity<> (null, headers);
         ResponseEntity<Iterable> responseEntity = makeRequest (path, HttpMethod.GET, nullBodyRequest, Iterable.class);

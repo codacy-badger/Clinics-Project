@@ -32,9 +32,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-        Cliente c1 = new Cliente ("Gabriel", "Cinfães", LocalDate.of (1966, 03, 23), "12344", "915", "gabrielF@gmail.com");
-        Cliente c2 = new Cliente ("Maria", "Viseu", LocalDate.of (1967, 01, 27), "43753", "935", "mariaP@gmail.com");
-        Cliente c3 = new Cliente ("Tiago", "Gaia", LocalDate.of (1991, 10, 10), "64485", "965", "tiagoC@gmail.com");
+        Cliente c1 = new Cliente ("Andre", "Guimarães", LocalDate.of (1942,03,04), "21269", "935961673", "andreA@gmail.com");
+        Cliente c2 = new Cliente ("Ana", "Anadia", LocalDate.of (1997,03,14), "217600", "916462712", "anaR@gmail.com");
+        Cliente c3 = new Cliente ("Rita", "Mafra", LocalDate.of (1954,07,16), "45303", "962712942", "ritaG@gmail.com");
 
 
         clienteService.save (c1);
@@ -42,9 +42,9 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         clienteService.save (c3);
 
 
-        Medico med1 = new Medico ("Alberto", "Porto", LocalDate.of (1972, 01, 20), "12332", "Urologia", "9119", "alberto@gmail.com");
-        Medico med2 = new Medico ("José", "Matosinhos", LocalDate.of (1992, 03, 29), "12342", "Geriatria", "9154", "jose@gmail.com");
-        Medico med3 = new Medico ("Joana", "Gaia", LocalDate.of (1968, 04, 16), "15324", "Cardiologia", "9543", "joana@gmail.com");
+        Medico med1 = new Medico ("Ferreira", "Porto", LocalDate.of (1972, 01, 20), "12332", "Urologia", "9119", "alberto@gmail.com");
+        Medico med2 = new Medico ("Carvalho", "Matosinhos", LocalDate.of (1992, 03, 29), "12342", "Geriatria", "9154", "jose@gmail.com");
+        Medico med3 = new Medico ("Ribeiro", "Gaia", LocalDate.of (1968, 04, 16), "15324", "Cardiologia", "9543", "joana@gmail.com");
 
 
         Horario h1 = new Horario (DayOfWeek.MONDAY, LocalTime.of (9, 0), LocalTime.of (20, 0), med1);
