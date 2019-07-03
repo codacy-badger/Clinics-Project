@@ -64,5 +64,5 @@ public class ClienteService implements ClienteServiceI {
     }
 
 
-    public void save (Cliente c) { clienterepo.save(c); }
+    public Optional<Cliente> save (Cliente c) { clienterepo.save(c); return clienterepo.findById(c.getId());}
 }

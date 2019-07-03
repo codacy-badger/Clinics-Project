@@ -30,13 +30,23 @@ public class Medico extends Pessoa {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "medico")
     private List<Horario> horarios = new ArrayList<> ();
 
+    public Medico(String name, String address, String birthday, String cc, String especialidade, String tlm, String email) {
+        super (name, address, birthday, cc, tlm, email);
+        this.especialidade = especialidade;
+
+        System.out.println (this.getDatanascimento ());
+        //this.horarios=horarios;
+    }
 
     public Medico(String name, String address, LocalDate birthday, String cc, String especialidade, String tlm, String email) {
         super (name, address, birthday, cc, tlm, email);
         this.especialidade = especialidade;
+
         //this.horarios=horarios;
 
     }
+
+
 
     public void addConsulta(LocalTime horario, Cliente cliente, String consultorio, DayOfWeek dia) {
 

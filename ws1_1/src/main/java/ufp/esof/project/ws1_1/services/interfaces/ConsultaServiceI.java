@@ -2,6 +2,8 @@ package ufp.esof.project.ws1_1.services.interfaces;
 
 import ufp.esof.project.ws1_1.models.Consulta;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -15,4 +17,14 @@ public interface ConsultaServiceI {
     Set<Consulta> getConsultaByMedicoId(Long id);
 
     Optional<Consulta> saveConsulta(Consulta consulta, Long medico_id, Long cliente_id);
+
+    boolean delete(Long id);
+
+    Set<Consulta> getConsultaOfClienteById(Long cliente_id, Long consulta_id);
+
+    Optional<Consulta> alterarHoraConsulta(Long consulta_id, String horario);
+
+    Optional<Consulta> alterarConsultorioConsulta(Long consulta_id, String dia);
+
+    Optional<Consulta> alterarDiaConsulta(Long consulta_id, String dia);
 }

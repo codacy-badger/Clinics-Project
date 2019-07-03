@@ -1,15 +1,14 @@
 package ufp.esof.project.ws1_1.controllers;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ufp.esof.project.ws1_1.models.Cliente;
 import ufp.esof.project.ws1_1.services.ClienteService;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 
@@ -62,6 +61,16 @@ public class ClienteController {
         Optional<Cliente> clienteDTOOptional=clienteService.getClienteByEmail(email);
         if(clienteDTOOptional.isPresent()){
             return ResponseEntity.ok(clienteDTOOptional.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/criar")
+    public ResponseEntity<Cliente> createEmployee(@RequestBody Cliente clienteInfo,@RequestParam("birthday")@DateTimeFormat(pattern="yyyy-MM-dd") LocalDate birthday) {
+        clienteInfo.setDatanascimento (birthday);
+        Optional<Cliente> clienteOptional= clienteService.save (clienteInfo);
+        if(clienteOptional.isPresent()){
+            return ResponseEntity.ok(clienteOptional.get());
         }
         return ResponseEntity.notFound().build();
     }

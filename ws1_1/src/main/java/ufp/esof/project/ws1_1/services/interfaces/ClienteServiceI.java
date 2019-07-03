@@ -18,7 +18,7 @@ public interface ClienteServiceI {
     Optional<Cliente> getClienteByPhone(String tlm);
 
 
-    void save(Cliente cliente);
+    Optional<Cliente> save(Cliente cliente);
 
 
 }
