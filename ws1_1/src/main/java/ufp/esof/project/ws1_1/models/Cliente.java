@@ -39,8 +39,6 @@ public class Cliente extends Pessoa {
 
     public void addConsulta(Consulta consulta) {
         consultas.add (consulta);
-        //consulta.setCliente(this);
-        //ponho aqui consultasRepo.save?
     }
 
 

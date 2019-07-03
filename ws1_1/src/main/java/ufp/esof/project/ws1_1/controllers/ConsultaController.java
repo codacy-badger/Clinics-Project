@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ufp.esof.project.ws1_1.models.Consulta;
 import ufp.esof.project.ws1_1.services.ConsultaService;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,77 +23,77 @@ public class ConsultaController {
     }
 
 
-    @RequestMapping(method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     Set<Consulta> findAllConsultas() {
-        return consultaService.findAllConsultas();
+        return consultaService.findAllConsultas ();
     }
 
 
-    @RequestMapping(value="/cliente/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Set<Consulta>  getByClienteId(@PathVariable("id") Long id){
+    Set<Consulta> getByClienteId(@PathVariable("id") Long id) {
 
-        return consultaService.getConsultaByClienteId(id);
+        return consultaService.getConsultaByClienteId (id);
     }
 
 
-    @RequestMapping(value="/medico/{id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/medico/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    Set<Consulta>  getByMedicoId(@PathVariable("id") Long id){
+    Set<Consulta> getByMedicoId(@PathVariable("id") Long id) {
 
-        return consultaService.getConsultaByMedicoId(id);
+        return consultaService.getConsultaByMedicoId (id);
     }
 
 
-    @PostMapping(value = "/{medico_id}/{cliente_id}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Consulta> saveConsulta(@RequestBody Consulta consulta, @PathVariable("medico_id") Long medico_id, @PathVariable("cliente_id") Long cliente_id){
+    @PostMapping(value = "/{medico_id}/{cliente_id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Consulta> saveConsulta(@RequestBody Consulta consulta, @PathVariable("medico_id") Long medico_id, @PathVariable("cliente_id") Long cliente_id) {
 
-        Optional<Consulta> consultaOptional= consultaService.saveConsulta(consulta,medico_id,cliente_id);
-        if(consultaOptional.isPresent()){
-            return ResponseEntity.ok(consultaOptional.get());
+        Optional<Consulta> consultaOptional = consultaService.saveConsulta (consulta, medico_id, cliente_id);
+        if (consultaOptional.isPresent ()) {
+            return ResponseEntity.ok (consultaOptional.get ());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound ().build ();
 
     }
 
     @DeleteMapping(value = "/cancelar/{id}")
-    public ResponseEntity<Long> cancelar(@PathVariable("id") Long id){
-        if(consultaService.delete (id)){
-            return new ResponseEntity<>(id, HttpStatus.OK);
+    public ResponseEntity<Long> cancelar(@PathVariable("id") Long id) {
+        if (consultaService.delete (id)) {
+            return new ResponseEntity<> (id, HttpStatus.OK);
         }
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<> (id, HttpStatus.OK);
     }
 
-    @RequestMapping(value ="/cliente/{cliente_id}/{consulta_id}", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-    public Set<Consulta> getConsultaOfClienteById(@PathVariable("cliente_id") Long cliente_id,@PathVariable("consulta_id")Long consulta_id){
-        return consultaService.getConsultaOfClienteById (cliente_id,consulta_id);
+    @RequestMapping(value = "/cliente/{cliente_id}/{consulta_id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Set<Consulta> getConsultaOfClienteById(@PathVariable("cliente_id") Long cliente_id, @PathVariable("consulta_id") Long consulta_id) {
+        return consultaService.getConsultaOfClienteById (cliente_id, consulta_id);
     }
 
     @PutMapping(value = "/modificar/{consulta_id}/hora")
-    public ResponseEntity<Consulta> alterarHoraConsulta(@PathVariable("consulta_id") Long consulta_id,@RequestParam("hora") String horario){
-        Optional<Consulta> consultaOptional= consultaService.alterarHoraConsulta (consulta_id,horario);
-        if(consultaOptional.isPresent()){
-            return ResponseEntity.ok(consultaOptional.get());
+    public ResponseEntity<Consulta> alterarHoraConsulta(@PathVariable("consulta_id") Long consulta_id, @RequestParam("hora") String horario) {
+        Optional<Consulta> consultaOptional = consultaService.alterarHoraConsulta (consulta_id, horario);
+        if (consultaOptional.isPresent ()) {
+            return ResponseEntity.ok (consultaOptional.get ());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound ().build ();
     }
 
     @PutMapping(value = "/modificar/{consulta_id}/consultorio")
-    public ResponseEntity<Consulta> alterarConsultorioConsulta(@PathVariable("consulta_id") Long consulta_id,@RequestParam("consultorio") String consultorio){
-        Optional<Consulta> consultaOptional= consultaService.alterarConsultorioConsulta (consulta_id,consultorio);
-        if(consultaOptional.isPresent()){
-            return ResponseEntity.ok(consultaOptional.get());
+    public ResponseEntity<Consulta> alterarConsultorioConsulta(@PathVariable("consulta_id") Long consulta_id, @RequestParam("consultorio") String consultorio) {
+        Optional<Consulta> consultaOptional = consultaService.alterarConsultorioConsulta (consulta_id, consultorio);
+        if (consultaOptional.isPresent ()) {
+            return ResponseEntity.ok (consultaOptional.get ());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound ().build ();
     }
 
     @PutMapping(value = "/modificar/{consulta_id}/dia")
-    public ResponseEntity<Consulta> alterarDiaConsulta(@PathVariable("consulta_id") Long consulta_id,@RequestParam("dia") String dia){
-        Optional<Consulta> consultaOptional= consultaService.alterarDiaConsulta (consulta_id,dia);
-        if(consultaOptional.isPresent()){
-            return ResponseEntity.ok(consultaOptional.get());
+    public ResponseEntity<Consulta> alterarDiaConsulta(@PathVariable("consulta_id") Long consulta_id, @RequestParam("dia") String dia) {
+        Optional<Consulta> consultaOptional = consultaService.alterarDiaConsulta (consulta_id, dia);
+        if (consultaOptional.isPresent ()) {
+            return ResponseEntity.ok (consultaOptional.get ());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound ().build ();
     }
 }

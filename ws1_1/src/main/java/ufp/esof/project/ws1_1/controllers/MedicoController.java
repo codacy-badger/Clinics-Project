@@ -81,14 +81,13 @@ public class MedicoController {
     }
 
     @PostMapping("/contratar")
-    public ResponseEntity<Medico> createEmployee(@RequestBody Medico medicoInfo, @RequestParam("birthday")@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)LocalDate birthday)
-    {
+    public ResponseEntity<Medico> createEmployee(@RequestBody Medico medicoInfo, @RequestParam("birthday") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate birthday) {
         medicoInfo.setDatanascimento (birthday);
-        Optional<Medico> medicoOptional= medicoService.save (medicoInfo);
-        if(medicoOptional.isPresent()){
-            return ResponseEntity.ok(medicoOptional.get());
+        Optional<Medico> medicoOptional = medicoService.save (medicoInfo);
+        if (medicoOptional.isPresent ()) {
+            return ResponseEntity.ok (medicoOptional.get ());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.notFound ().build ();
     }
 
 }

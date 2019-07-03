@@ -35,17 +35,13 @@ public class Medico extends Pessoa {
         this.especialidade = especialidade;
 
         System.out.println (this.getDatanascimento ());
-        //this.horarios=horarios;
     }
 
     public Medico(String name, String address, LocalDate birthday, String cc, String especialidade, String tlm, String email) {
         super (name, address, birthday, cc, tlm, email);
         this.especialidade = especialidade;
 
-        //this.horarios=horarios;
-
     }
-
 
 
     public void addConsulta(LocalTime horario, Cliente cliente, String consultorio, DayOfWeek dia) {
@@ -106,26 +102,8 @@ public class Medico extends Pessoa {
         }
     }
 
-
-        /*
-        if (!consultas.isEmpty()) {
-            for (Consulta c : consultas) {
-                if(c.getDia())
-                if (c.getHorario().equals(consulta.getHorario())) {
-                    return;
-                }
-            }
-        }
-        consultas.add(consulta);
-        //consulta.getCliente().addConsulta(consulta);
-
-        */
-
-
     public void addHorario(List<Horario> horarios) {
-
         this.horarios = horarios;
-
     }
 
 }

@@ -3,7 +3,6 @@ package ufp.esof.project.ws1_1.services.interfaces;
 import ufp.esof.project.ws1_1.models.Medico;
 import ufp.esof.project.ws1_1.services.filters.FilterObject;
 
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 

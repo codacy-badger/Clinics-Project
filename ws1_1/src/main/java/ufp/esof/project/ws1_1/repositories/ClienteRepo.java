@@ -7,8 +7,7 @@ import ufp.esof.project.ws1_1.models.Cliente;
 import java.util.Optional;
 
 @Repository
-public interface ClienteRepo extends CrudRepository<Cliente,Long> {
+public interface ClienteRepo extends CrudRepository<Cliente, Long> {
     Optional<Cliente> findByName(String name);
-    //Optional<Cliente> findByCC(String cc);
 
 }

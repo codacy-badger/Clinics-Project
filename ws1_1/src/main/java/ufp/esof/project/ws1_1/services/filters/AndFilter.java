@@ -4,7 +4,7 @@ import ufp.esof.project.ws1_1.models.BaseModel;
 
 import java.util.Set;
 
-public class AndFilter<T extends BaseModel> implements FilterI<T>{
+public class AndFilter<T extends BaseModel> implements FilterI<T> {
     private FilterI<T> filter;
     private FilterI<T> otherFilter;
 
@@ -16,7 +16,7 @@ public class AndFilter<T extends BaseModel> implements FilterI<T>{
 
     @Override
     public Set<T> filter(Set<T> entities) {
-        Set<T> filter1=this.filter.filter(entities);
-        return this.otherFilter.filter(filter1);
+        Set<T> filter1 = this.filter.filter (entities);
+        return this.otherFilter.filter (filter1);
     }
 }

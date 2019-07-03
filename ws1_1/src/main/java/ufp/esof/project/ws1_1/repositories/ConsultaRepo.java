@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import ufp.esof.project.ws1_1.models.Consulta;
 
 @Repository
-public interface ConsultaRepo extends CrudRepository<Consulta,Long> {
+public interface ConsultaRepo extends CrudRepository<Consulta, Long> {
 
 
 }

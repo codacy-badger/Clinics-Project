@@ -1,6 +1,5 @@
 package ufp.esof.project.ws1_1.models;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @ToString
 public class Consulta extends BaseModel {
-    @JsonFormat(pattern="HH:mm:ss")
+
     private LocalTime horario;
 
     private String especialidade;
@@ -35,16 +34,13 @@ public class Consulta extends BaseModel {
 
     public Consulta(LocalTime horario, String especialidade, Cliente cliente, Medico medico, String consultorio, DayOfWeek dia) {
 
-
-
-
-        if (medico.getEspecialidade().equalsIgnoreCase(especialidade)) {
+        if (medico.getEspecialidade ().equalsIgnoreCase (especialidade)) {
             this.horario = horario;
-            this.especialidade = medico.getEspecialidade();
+            this.especialidade = medico.getEspecialidade ();
             this.cliente = cliente;
             this.medico = medico;
             this.consultorio = consultorio;
-            this.dia=dia;
+            this.dia = dia;
         } else return;
 
     }

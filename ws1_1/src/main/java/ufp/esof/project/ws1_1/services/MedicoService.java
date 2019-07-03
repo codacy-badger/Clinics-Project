@@ -8,7 +8,6 @@ import ufp.esof.project.ws1_1.services.filters.FilterObject;
 import ufp.esof.project.ws1_1.services.filters.medico.MedFilterService;
 import ufp.esof.project.ws1_1.services.interfaces.MedicoServiceI;
 
-import java.time.LocalDate;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
@@ -83,7 +82,8 @@ public class MedicoService implements MedicoServiceI {
     }
 
     @Override
-    public Optional<Medico> save(Medico medico) { medicorepo.save(medico); return medicorepo.findById(medico.getId());}
+    public Optional<Medico> save(Medico medico) { medicorepo.save(medico);
+        return medicorepo.findById (medico.getId ());}
 
     @Override
     public boolean delete(Long id){

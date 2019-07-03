@@ -9,14 +9,16 @@ public class MedEspecialidadeFilter implements MedFilterI {
 
     private String especialidadeToFilter;
 
-    public MedEspecialidadeFilter(String especialidadeToFilter){ this.especialidadeToFilter=especialidadeToFilter; }
+    public MedEspecialidadeFilter(String especialidadeToFilter) {
+        this.especialidadeToFilter = especialidadeToFilter;
+    }
 
     @Override
     public Set<Medico> filter(Set<Medico> medicos) {
-        if(especialidadeToFilter==null)return medicos;
-        return medicos.stream()
-                .filter(medico -> medico.getEspecialidade().equalsIgnoreCase(this.especialidadeToFilter))
-                .collect(Collectors.toSet());
+        if (especialidadeToFilter == null) return medicos;
+        return medicos.stream ()
+                .filter (medico -> medico.getEspecialidade ().equalsIgnoreCase (this.especialidadeToFilter))
+                .collect (Collectors.toSet ());
     }
 
 

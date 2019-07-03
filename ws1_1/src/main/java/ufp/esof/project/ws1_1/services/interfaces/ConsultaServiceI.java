@@ -2,8 +2,6 @@ package ufp.esof.project.ws1_1.services.interfaces;
 
 import ufp.esof.project.ws1_1.models.Consulta;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.util.Optional;
 import java.util.Set;
 

@@ -12,12 +12,12 @@ import java.util.Set;
 public class MedFilterService {
     public Set<Medico> filterMedicos(Set<Medico> medicos, FilterObject filterObject) {
 
-        FilterI<Medico> medicoEspecialidadeFilter = new MedEspecialidadeFilter(filterObject.getEspecialidade());
+        FilterI<Medico> medicoEspecialidadeFilter = new MedEspecialidadeFilter (filterObject.getEspecialidade ());
 
-        FilterI<Medico> medicoDiaHoraFilter = new MedDiaHoraFilter(filterObject.getDia(),filterObject.getHora());
+        FilterI<Medico> medicoDiaHoraFilter = new MedDiaHoraFilter (filterObject.getDia (), filterObject.getHora ());
 
         FilterI<Medico> medicoAndHorarioFilter = new AndFilter<> (medicoEspecialidadeFilter, medicoDiaHoraFilter);
 
-        return medicoAndHorarioFilter.filter(medicos);
+        return medicoAndHorarioFilter.filter (medicos);
     }
 }

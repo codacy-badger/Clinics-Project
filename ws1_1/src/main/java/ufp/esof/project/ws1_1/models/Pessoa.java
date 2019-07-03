@@ -7,13 +7,6 @@ import lombok.Setter;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.MappedSuperclass;
-import java.time.LocalDate;
-
-
 @Getter
 @Setter
 @MappedSuperclass
@@ -23,7 +16,7 @@ public class Pessoa extends BaseModel {
     private String address;
     private String tlm;
     private String email;
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate datanascimento;
     private String cc;
 
@@ -50,8 +43,8 @@ public class Pessoa extends BaseModel {
         Integer year = Integer.parseInt (aux[0]);
         Integer month = Integer.parseInt (aux[1]);
         Integer day = Integer.parseInt (aux[2]);
-        LocalDate birthday= LocalDate.of (year,month,day);
-        this.datanascimento=birthday;
+        LocalDate birthday = LocalDate.of (year, month, day);
+        this.datanascimento = birthday;
         setDatanascimento (birthday);
 
     }

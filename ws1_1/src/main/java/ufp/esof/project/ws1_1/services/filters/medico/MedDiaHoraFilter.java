@@ -14,43 +14,40 @@ public class MedDiaHoraFilter implements MedFilterI {
     private String diaToFilter;
     private int horaTofilter;
 
-    public MedDiaHoraFilter(String diaToFilter, int horaTofilter){
-        this.diaToFilter=diaToFilter;
-        this.horaTofilter=horaTofilter;
+    public MedDiaHoraFilter(String diaToFilter, int horaTofilter) {
+        this.diaToFilter = diaToFilter;
+        this.horaTofilter = horaTofilter;
     }
 
     @Override
     public Set<Medico> filter(Set<Medico> medicos) {
 
-        int count=0;
+        int count = 0;
+        Set<Medico> medicos_aux = new HashSet<> ();
 
-        Set<Medico> medicos_aux=new HashSet<>();
+        if (diaToFilter == null) return medicos;
 
-        if(diaToFilter==null)return medicos;
+        for (Medico m : medicos) {
+            int day_index = DayOfWeek.valueOf (diaToFilter).getValue ();
+            Horario horario_med = m.getHorarios ().get (day_index - 1);
 
-
-
-        for(Medico m : medicos) {
-            int day_index=DayOfWeek.valueOf(diaToFilter).getValue();
-            Horario horario_med = m.getHorarios().get(day_index-1);
-
-            if(horaTofilter<horario_med.getHora_incio().getHour() || horaTofilter>=horario_med.getHora_fim().getHour()){
+            if (horaTofilter < horario_med.getHora_incio ().getHour () || horaTofilter >= horario_med.getHora_fim ().getHour ()) {
                 continue;
             }
-            count=0;
-            if (m.getConsultas().isEmpty()) {
-                medicos_aux.add(m);
+            count = 0;
+            if (m.getConsultas ().isEmpty ()) {
+                medicos_aux.add (m);
             } else {
-                for (Consulta c : m.getConsultas()) {
-                    if (c.getDia().equals(DayOfWeek.valueOf(diaToFilter))) {
-                        if ((c.getHorario().equals(LocalTime.of(horaTofilter, 0)))) {
+                for (Consulta c : m.getConsultas ()) {
+                    if (c.getDia ().equals (DayOfWeek.valueOf (diaToFilter))) {
+                        if ((c.getHorario ().equals (LocalTime.of (horaTofilter, 0)))) {
                             count++;
 
                         }
                     }
                 }
-                if(count==0){
-                    medicos_aux.add(m);
+                if (count == 0) {
+                    medicos_aux.add (m);
                 }
             }
         }

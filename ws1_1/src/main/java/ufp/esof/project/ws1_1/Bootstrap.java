@@ -100,7 +100,6 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         med3.addConsulta (LocalTime.of (13, 0), c1, "A134", DayOfWeek.THURSDAY);
 
-
         medicoService.save (med1);
         medicoService.save (med2);
         medicoService.save (med3);

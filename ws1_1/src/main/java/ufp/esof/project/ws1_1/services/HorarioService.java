@@ -12,6 +12,6 @@ public class HorarioService implements HorarioServiceI {
 
     @Override
     public void save(Horario horario) {
-        horariorepo.save(horario);
+        horariorepo.save (horario);
     }
 }
