@@ -1,9 +1,9 @@
 package ufp.esof.project.ws1_1.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ufp.esof.project.ws1_1.Ws1Application;
-import ufp.esof.project.ws1_1.models.Cliente;
-import ufp.esof.project.ws1_1.services.interfaces.ClienteServiceI;
+import ufp.esof.project.ws1.Ws1Application;
+import ufp.esof.project.ws1.models.Cliente;
+import ufp.esof.project.ws1.services.interfaces.ClienteServiceI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

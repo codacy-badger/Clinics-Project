@@ -1,10 +1,10 @@
 package ufp.esof.project.ws1_1.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ufp.esof.project.ws1_1.Ws1Application;
-import ufp.esof.project.ws1_1.models.Medico;
-import ufp.esof.project.ws1_1.services.interfaces.MedicoServiceI;
-import ufp.esof.project.ws1_1.services.filters.FilterObject;
+import ufp.esof.project.ws1.Ws1Application;
+import ufp.esof.project.ws1.models.Medico;
+import ufp.esof.project.ws1.services.interfaces.MedicoServiceI;
+import ufp.esof.project.ws1.services.filters.FilterObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
