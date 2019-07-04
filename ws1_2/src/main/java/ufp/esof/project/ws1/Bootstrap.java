@@ -2,7 +2,6 @@ package ufp.esof.project.ws1;
 
 import ufp.esof.project.ws1.models.*;
 import ufp.esof.project.ws1.services.ClienteService;
-import ufp.esof.project.ws1.services.ConsultaService;
 import ufp.esof.project.ws1.services.MedicoService;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -20,12 +19,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     //private Logger logger= LoggerFactory.getLogger(Bootstrap.class);
     private ClienteService clienteService;
     private MedicoService medicoService;
-    private ConsultaService consultaService;
 
-    public Bootstrap(ClienteService clienteService, MedicoService medicoService, ConsultaService consultaService) {
+    public Bootstrap(ClienteService clienteService, MedicoService medicoService) {
         this.clienteService = clienteService;
         this.medicoService = medicoService;
-        this.consultaService = consultaService;
     }
 
 

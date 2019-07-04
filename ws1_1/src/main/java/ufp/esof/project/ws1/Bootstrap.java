@@ -2,7 +2,6 @@ package ufp.esof.project.ws1;
 
 import ufp.esof.project.ws1.models.*;
 import ufp.esof.project.ws1.services.ClienteService;
-import ufp.esof.project.ws1.services.ConsultaService;
 import ufp.esof.project.ws1.services.MedicoService;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
