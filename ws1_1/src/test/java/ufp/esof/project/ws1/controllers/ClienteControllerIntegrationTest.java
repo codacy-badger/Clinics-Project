@@ -1,10 +1,10 @@
-package ufp.esof.project.ws1_1.controllers;
+package ufp.esof.project.ws1.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import ufp.esof.project.ws1.Ws1Application;
-import ufp.esof.project.ws1.models.Medico;
-import ufp.esof.project.ws1.services.interfaces.MedicoServiceI;
-import ufp.esof.project.ws1.services.filters.FilterObject;
+import ufp.esof.project.ws1.models.Cliente;
+import ufp.esof.project.ws1.services.interfaces.ClienteServiceI;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,23 +17,25 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import javax.transaction.Transactional;
+
 import java.time.LocalDate;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Ws1Application.class)
 @AutoConfigureMockMvc
 @Transactional
-public class MedicoControllerIntegrationTest {
+public class ClienteControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Autowired
-    private MedicoServiceI medicoService;
+    private ClienteServiceI clienteService;
 
 
     @Autowired
@@ -42,57 +44,59 @@ public class MedicoControllerIntegrationTest {
     @Before
     public void setUp(){
 
-        Medico medico=new Medico("medico1", "address",LocalDate.of(1970,01,20), "12332", "especialidade","123", "email" );
-        medicoService.save(medico);
+        Cliente cliente=new Cliente("cliente1","address1", LocalDate.of(2000,01,01),"1234","123","email");
+        clienteService.save(cliente);
     }
 
     @Test
-    public void getAllMedico() throws Exception {
-        Iterable<Medico> medicos=medicoService.getFilteredMedicos(new FilterObject());
-        mvc.perform(get("/medico").contentType(MediaType.APPLICATION_JSON_VALUE))
+    public void getAllCliente() throws Exception {
+        Iterable<Cliente> clientes=clienteService.findAllClientes();
+        Assert.assertNotNull (clientes);
+        mvc.perform(get("/cliente").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.content().json(mapper.writeValueAsString(medicos)))
+                .andExpect(MockMvcResultMatchers.content().json(mapper.writeValueAsString(clientes)))
                 .andReturn();
     }
 
     @Test
     public void getById() throws Exception {
-        Medico medico=medicoService.findMedicoById(1l).get();
-        mvc.perform(get("/medico/1").contentType(MediaType.APPLICATION_JSON_VALUE))
+        Cliente cliente=clienteService.findClienteById(1l).get();
+        mvc.perform(get("/cliente/1").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(medico.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(cliente.getName()))
                 .andReturn();
 
-        mvc.perform(get("/medico/error").contentType(MediaType.APPLICATION_JSON_VALUE))
+        mvc.perform(get("/cliente/error").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is4xxClientError());
     }
 
     @Test
     public void getByPhone() throws Exception {
-        Medico medico=medicoService.getMedicoByPhone("123").get();
-        mvc.perform(get("/medico/phone/123").contentType(MediaType.APPLICATION_JSON_VALUE))
+        Cliente cliente=clienteService.getClienteByPhone("123").get();
+        mvc.perform(get("/cliente/phone/123").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(medico.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(cliente.getName()))
                 .andReturn();
 
-        mvc.perform(get("/medico/phone/error").contentType(MediaType.APPLICATION_JSON_VALUE))
+        mvc.perform(get("/cliente/phone/error").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is4xxClientError());
 
     }
 
     @Test
     public void getByEmail() throws Exception {
-        Medico medico=medicoService.getMedicoByEmail("email").get();
-        mvc.perform(get("/medico/email/email").contentType(MediaType.APPLICATION_JSON_VALUE))
+        Cliente cliente=clienteService.getClienteByEmail("email").get();
+        Assert.assertNotNull (cliente);
+        mvc.perform(get("/cliente/email/email").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(medico.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(cliente.getName()))
                 .andReturn();
 
-        mvc.perform(get("/medico/email/error").contentType(MediaType.APPLICATION_JSON_VALUE))
+        mvc.perform(get("/cliente/email/error").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().is4xxClientError());
 
     }

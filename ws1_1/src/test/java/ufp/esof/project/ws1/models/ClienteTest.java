@@ -1,9 +1,7 @@
-package ufp.esof.project.ws1_1.models;
+package ufp.esof.project.ws1.models;
 
 import org.junit.Before;
 import org.junit.Test;
-import ufp.esof.project.ws1.models.Cliente;
-import ufp.esof.project.ws1.models.Consulta;
 
 import static org.junit.Assert.assertEquals;
 

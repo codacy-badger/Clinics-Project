@@ -1,4 +1,4 @@
-package ufp.esof.project.ws1_1;
+package ufp.esof.project.ws1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

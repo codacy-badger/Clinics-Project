@@ -47,11 +47,8 @@ public class Medico extends Pessoa {
 
         if (!this.getConsultas ().isEmpty ()) {
             for (Consulta c : this.getConsultas ()) {
-                if (c.getDia ().equals (dia)) {
-                    if ((c.getHorario ().equals (LocalTime.of (horario.getHour (), 0)))) {
+                if (c.getDia ().equals (dia) && (c.getHorario ().equals (LocalTime.of (horario.getHour (), 0)))) {
                         count++;
-
-                    }
                 }
             }
             if (count != 0) {

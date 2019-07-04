@@ -1,4 +1,4 @@
-package ufp.esof.project.ws1_1.services;
+package ufp.esof.project.ws1.services;
 
 import ufp.esof.project.ws1.models.Cliente;
 import ufp.esof.project.ws1.repositories.ClienteRepo;
@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import ufp.esof.project.ws1.services.ClienteService;
 
 import java.util.HashSet;
 import java.util.Set;
