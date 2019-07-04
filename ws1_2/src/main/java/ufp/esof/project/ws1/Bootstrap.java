@@ -92,13 +92,13 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         med3.addHorario (horarios_3);
 
 
-        med1.addConsulta (LocalTime.of (8, 0), c1, "A188", DayOfWeek.FRIDAY);
-        med1.addConsulta (LocalTime.of (9, 0), c2, "A188", DayOfWeek.FRIDAY);
-        med1.addConsulta (LocalTime.of (10, 0), c3, "A134", DayOfWeek.MONDAY);
+        med1.addConsulta (LocalTime.of (8, 0), c1, "A188", DayOfWeek.FRIDAY,20.5);
+        med1.addConsulta (LocalTime.of (9, 0), c2, "A188", DayOfWeek.FRIDAY,30.0);
+        med1.addConsulta (LocalTime.of (10, 0), c3, "A134", DayOfWeek.MONDAY,25.0);
 
-        med2.addConsulta (LocalTime.of (14, 0), c2, "A134", DayOfWeek.TUESDAY);
+        med2.addConsulta (LocalTime.of (14, 0), c2, "A134", DayOfWeek.TUESDAY,14.0);
 
-        med3.addConsulta (LocalTime.of (13, 0), c1, "A134", DayOfWeek.THURSDAY);
+        med3.addConsulta (LocalTime.of (13, 0), c1, "A134", DayOfWeek.THURSDAY,22.0);
 
 
         medicoService.save (med1);

@@ -1,6 +1,5 @@
 package ufp.esof.project.ws1.controllers;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import ufp.esof.project.ws1.models.Cliente;
 import ufp.esof.project.ws1.services.ClienteService;
 
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 
@@ -66,8 +64,7 @@ public class ClienteController {
     }
 
     @PostMapping("/criar")
-    public ResponseEntity<Cliente> createEmployee(@RequestBody Cliente clienteInfo, @RequestParam("birthday") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate birthday) {
-        clienteInfo.setDatanascimento (birthday);
+    public ResponseEntity<Cliente> createClient(@RequestBody Cliente clienteInfo) {
         Optional<Cliente> clienteOptional = clienteService.save (clienteInfo);
         if (clienteOptional.isPresent ()) {
             return ResponseEntity.ok (clienteOptional.get ());

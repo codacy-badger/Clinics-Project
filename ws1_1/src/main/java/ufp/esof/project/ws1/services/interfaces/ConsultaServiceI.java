@@ -22,7 +22,7 @@ public interface ConsultaServiceI {
 
     Optional<Consulta> alterarHoraConsulta(Long consulta_id, String horario);
 
-    Optional<Consulta> alterarConsultorioConsulta(Long consulta_id, String dia);
+    Optional<Consulta> alterarConsultorioConsulta(Long consulta_id, String consultorio);
 
     Optional<Consulta> alterarDiaConsulta(Long consulta_id, String dia);
 

@@ -27,12 +27,12 @@ public class Cliente extends Pessoa {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cliente")
     private List<Consulta> consultas = new ArrayList<> ();
 
-    public Cliente(String name, String address, LocalDate birthday, String cc, String tlm, String email) {
-        super (name, address, birthday, cc, tlm, email);
+    public Cliente(String name, String address, LocalDate datanascimento, String cc, String tlm, String email) {
+        super (name, address, datanascimento, cc, tlm, email);
     }
 
-    public void addConsulta(LocalTime horario, String especialidade, Medico medico, String consultorio, DayOfWeek dia) {
-        Consulta consulta = new Consulta (horario, especialidade, this, medico, consultorio, dia);
+    public void addConsulta(LocalTime horario, String especialidade, Medico medico, String consultorio, DayOfWeek dia, Double preco) {
+        Consulta consulta = new Consulta (horario, especialidade, this, medico, consultorio, dia,preco);
         consultas.add (consulta);
         consulta.setCliente (this);
     }

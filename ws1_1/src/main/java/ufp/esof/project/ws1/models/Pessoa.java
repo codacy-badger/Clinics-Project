@@ -33,20 +33,5 @@ public class Pessoa extends BaseModel {
         this.email = email;
     }
 
-    public Pessoa(String name, String address, String datanascimento, String cc, String tlm, String email) {
-        this.name = name;
-        this.address = address;
-        this.cc = cc;
-        this.tlm = tlm;
-        this.email = email;
-        String aux[] = datanascimento.split ("-");
-        Integer year = Integer.parseInt (aux[0]);
-        Integer month = Integer.parseInt (aux[1]);
-        Integer day = Integer.parseInt (aux[2]);
-        LocalDate birthday = LocalDate.of (year, month, day);
-        this.datanascimento = birthday;
-        setDatanascimento (birthday);
-
-    }
 
 }

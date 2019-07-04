@@ -31,8 +31,10 @@ public class Consulta extends BaseModel {
 
     private DayOfWeek dia;
 
+    private Double preco;
 
-    public Consulta(LocalTime horario, String especialidade, Cliente cliente, Medico medico, String consultorio, DayOfWeek dia) {
+
+    public Consulta(LocalTime horario, String especialidade, Cliente cliente, Medico medico, String consultorio, DayOfWeek dia, Double preco) {
 
         if (medico.getEspecialidade ().equalsIgnoreCase (especialidade)) {
             this.horario = horario;
@@ -41,6 +43,7 @@ public class Consulta extends BaseModel {
             this.medico = medico;
             this.consultorio = consultorio;
             this.dia = dia;
+            this.preco=preco;
         } else return;
 
     }

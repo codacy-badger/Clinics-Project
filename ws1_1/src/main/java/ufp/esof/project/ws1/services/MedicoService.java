@@ -82,8 +82,10 @@ public class MedicoService implements MedicoServiceI {
     }
 
     @Override
-    public Optional<Medico> save(Medico medico) { medicorepo.save(medico);
-        return medicorepo.findById (medico.getId ());}
+    public Optional<Medico> save(Medico medico) {
+        medicorepo.save(medico);
+        return medicorepo.findById (medico.getId ());
+    }
 
     @Override
     public boolean delete(Long id){

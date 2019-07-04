@@ -2,7 +2,6 @@ package ufp.esof.project.ws1.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +11,12 @@ import ufp.esof.project.ws1.models.Medico;
 import ufp.esof.project.ws1.services.MedicoService;
 import ufp.esof.project.ws1.services.filters.FilterObject;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 
 @Controller
 @RequestMapping("/medico")
 public class MedicoController {
-
 
     private MedicoService medicoService;
 
@@ -81,8 +78,7 @@ public class MedicoController {
     }
 
     @PostMapping("/contratar")
-    public ResponseEntity<Medico> createEmployee(@RequestBody Medico medicoInfo, @RequestParam("birthday") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate birthday) {
-        medicoInfo.setDatanascimento (birthday);
+    public ResponseEntity<Medico> createEmployee(@RequestBody Medico medicoInfo) {
         Optional<Medico> medicoOptional = medicoService.save (medicoInfo);
         if (medicoOptional.isPresent ()) {
             return ResponseEntity.ok (medicoOptional.get ());

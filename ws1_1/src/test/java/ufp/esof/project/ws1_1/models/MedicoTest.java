@@ -55,9 +55,9 @@ public class MedicoTest {
         medico1.addHorario (horarios);
 
         assertEquals (0, medico1.getConsultas ().size ());
-        medico1.addConsulta (LocalTime.of (10, 0), cliente1, "A134", DayOfWeek.MONDAY);
+        medico1.addConsulta (LocalTime.of (10, 0), cliente1, "A134", DayOfWeek.MONDAY,20.0);
         assertEquals (1, medico1.getConsultas ().size ());
-        medico1.addConsulta (LocalTime.of (10, 0), cliente1, "A134", DayOfWeek.MONDAY);
+        medico1.addConsulta (LocalTime.of (10, 0), cliente1, "A134", DayOfWeek.MONDAY,20.0);
         assertEquals (1, medico1.getConsultas ().size ());
 
     }
