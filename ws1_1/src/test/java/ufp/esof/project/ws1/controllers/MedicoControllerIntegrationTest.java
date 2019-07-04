@@ -37,7 +37,7 @@ public class MedicoControllerIntegrationTest {
     private MedicoServiceI medicoService;
 
     @Autowired
-    ObjectMapper mapper;
+    private ObjectMapper mapper;
 
     @Before
     public void setUp(){
@@ -49,6 +49,7 @@ public class MedicoControllerIntegrationTest {
     @Test
     public void getAllMedico() throws Exception {
         Iterable<Medico> medicos=medicoService.getFilteredMedicos(new FilterObject());
+        Assert.assertNotNull (medicos);
         mvc.perform(get("/medico").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
@@ -73,6 +74,7 @@ public class MedicoControllerIntegrationTest {
     @Test
     public void getByPhone() throws Exception {
         Medico medico=medicoService.getMedicoByPhone("123").get();
+        Assert.assertNotNull (medico);
         mvc.perform(get("/medico/phone/123").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))

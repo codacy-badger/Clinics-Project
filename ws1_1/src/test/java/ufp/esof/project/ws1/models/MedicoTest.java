@@ -13,16 +13,14 @@ import static org.junit.Assert.assertEquals;
 
 public class MedicoTest {
 
-    Cliente cliente1 = new Cliente ("Leandro", "Meixomil", LocalDate.of (1998, 04, 17), "12344", "911", "leandro@gmail.com");
+    private Cliente cliente1 = new Cliente ("Leandro", "Meixomil", LocalDate.of (1998, 04, 17), "12344", "911", "leandro@gmail.com");
 
 
-    Medico medico1 = new Medico ("Alberto", "Porto", LocalDate.of (1970, 01, 20), "12332", "Urologia", "9119", "alberto@gmail.com");
+    private Medico medico1 = new Medico ("Alberto", "Porto", LocalDate.of (1970, 01, 20), "12332", "Urologia", "9119", "alberto@gmail.com");
 
-    Horario h1 = new Horario (DayOfWeek.MONDAY, LocalTime.of (9, 0), LocalTime.of (20, 0), medico1);
+    private Horario h1 = new Horario (DayOfWeek.MONDAY, LocalTime.of (9, 0), LocalTime.of (20, 0), medico1);
 
-    List<Horario> horarios = new ArrayList<> ();
-    //
-
+    private List<Horario> horarios = new ArrayList<> ();
 
     @Before
     public void setUp() {
@@ -31,9 +29,6 @@ public class MedicoTest {
 
     @Test
     public void testAddHorarios() {
-
-        //Consulta consulta1=new Consulta();
-
         horarios.add (h1);
 
         assertEquals (0, medico1.getHorarios ().size ());

@@ -39,7 +39,7 @@ public class ClienteControllerIntegrationTest {
 
 
     @Autowired
-    ObjectMapper mapper;
+    private ObjectMapper mapper;
 
     @Before
     public void setUp(){
@@ -62,6 +62,7 @@ public class ClienteControllerIntegrationTest {
     @Test
     public void getById() throws Exception {
         Cliente cliente=clienteService.findClienteById(1l).get();
+        Assert.assertNotNull (cliente);
         mvc.perform(get("/cliente/1").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
@@ -75,6 +76,7 @@ public class ClienteControllerIntegrationTest {
     @Test
     public void getByPhone() throws Exception {
         Cliente cliente=clienteService.getClienteByPhone("123").get();
+        Assert.assertNotNull (cliente);
         mvc.perform(get("/cliente/phone/123").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))

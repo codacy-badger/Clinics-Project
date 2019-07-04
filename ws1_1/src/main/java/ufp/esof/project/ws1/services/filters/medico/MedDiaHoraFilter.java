@@ -39,11 +39,8 @@ public class MedDiaHoraFilter implements MedFilterI {
                 medicos_aux.add (m);
             } else {
                 for (Consulta c : m.getConsultas ()) {
-                    if (c.getDia ().equals (DayOfWeek.valueOf (diaToFilter))) {
-                        if ((c.getHorario ().equals (LocalTime.of (horaTofilter, 0)))) {
+                    if (c.getDia ().equals (DayOfWeek.valueOf (diaToFilter))&& (c.getHorario ().equals (LocalTime.of (horaTofilter, 0)))) {
                             count++;
-
-                        }
                     }
                 }
                 if (count == 0) {

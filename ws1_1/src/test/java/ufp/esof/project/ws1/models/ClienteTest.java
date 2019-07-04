@@ -8,6 +8,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ClienteTest {
 
+    private Consulta consulta1=new Consulta();
+
+    private Cliente cliente1 = new Cliente ();
+
     @Before
     public void setUp(){
 
@@ -15,10 +19,6 @@ public class ClienteTest {
 
     @Test
     public void testAddConsulta(){
-        Consulta consulta1=new Consulta();
-
-        Cliente cliente1 = new Cliente ();
-
         assertEquals(0,cliente1.getConsultas().size());
         cliente1.addConsulta(consulta1);
         assertEquals(1,cliente1.getConsultas().size());
