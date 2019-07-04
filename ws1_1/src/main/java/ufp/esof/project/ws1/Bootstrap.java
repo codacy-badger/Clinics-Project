@@ -20,12 +20,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     //private Logger logger= LoggerFactory.getLogger(Bootstrap.class);
     private ClienteService clienteService;
     private MedicoService medicoService;
-    private ConsultaService consultaService;
 
-    public Bootstrap(ClienteService clienteService, MedicoService medicoService, ConsultaService consultaService) {
+    public Bootstrap(ClienteService clienteService, MedicoService medicoService) {
         this.clienteService = clienteService;
         this.medicoService = medicoService;
-        this.consultaService = consultaService;
     }
 
 
