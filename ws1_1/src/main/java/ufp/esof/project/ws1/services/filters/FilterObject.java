@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class FilterObject {
-    String especialidade;
-    String dia;
-    int hora;
+    private String especialidade;
+    private String dia;
+    private int hora;
 }

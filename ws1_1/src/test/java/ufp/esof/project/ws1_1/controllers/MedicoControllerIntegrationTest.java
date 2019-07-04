@@ -1,6 +1,7 @@
 package ufp.esof.project.ws1_1.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import ufp.esof.project.ws1.Ws1Application;
 import ufp.esof.project.ws1.models.Medico;
 import ufp.esof.project.ws1.services.interfaces.MedicoServiceI;
@@ -86,6 +87,7 @@ public class MedicoControllerIntegrationTest {
     @Test
     public void getByEmail() throws Exception {
         Medico medico=medicoService.getMedicoByEmail("email").get();
+        Assert.assertNotNull (medico);
         mvc.perform(get("/medico/email/email").contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
